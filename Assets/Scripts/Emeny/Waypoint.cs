@@ -1,26 +1,21 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 
 public class Waypoint : MonoBehaviour
 {
+    [SerializeField] private Enemy _enemy;
+
     private List<Transform> _targets;
-    private Enemy _enemy;
 
-    public event Func<List<Transform>> OnCreate;
-
-    private void Start()
+    public void Initialize(List<Transform> points)
     {
-        _enemy = GetComponent<Enemy>();
-        _targets = OnCreate?.Invoke();        
-        _enemy.OnReachingTarget += GetNextTarget;
+        _targets = points;      
+        _enemy.ReachedTarget += GetNextTarget;
     }
 
-    private void OnDisable()
+    public void Dispose()
     {
-        _enemy.OnReachingTarget -= GetNextTarget;
+        _enemy.ReachedTarget -= GetNextTarget;
     }
 
     private Transform GetNextTarget(Transform currentTarget)

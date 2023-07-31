@@ -899,6 +899,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _offset: 0.2
   _damage: 1
+  _waypoint: {fileID: 6154231729305711863}
+  _movement: {fileID: 4242862803777421537}
 --- !u!114 &6154231729305711863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -911,6 +913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9d2c3c7c5f0ee4eaf3b06a5c703b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemy: {fileID: 5562573635125191832}
 --- !u!114 &4242862803777421537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,6 +926,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef19dbea86a9a14f855021d40bde065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 5048087349951109787}
+  _enemy: {fileID: 5562573635125191832}
   _speedMove: 1
 --- !u!114 &976065993369616257
 MonoBehaviour:
@@ -936,6 +941,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc208311287bdb24aa27052e89abb3c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 5048087349951109787}
+  _animator: {fileID: 2900766983141063648}
 --- !u!61 &7412863848090697273
 BoxCollider2D:
   m_ObjectHideFlags: 0

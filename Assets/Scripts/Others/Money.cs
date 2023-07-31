@@ -8,10 +8,10 @@ public class Money : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetComponent<Wallet>())
+        if (other.TryGetComponent(out Wallet wallet))
         {
+            wallet.Accept(_price);
             Destroy(gameObject);
-            other.GetComponent<Wallet>().Accept(_price);
         }
     }
 }

@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    private Rigidbody2D _rigidbody;
-    private Animator _animator;
+    [SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private Animator _animator;
 
     private int _speed;
     private int _direction;
@@ -13,9 +11,6 @@ public class PlayerAnimation : MonoBehaviour
 
     private void Start()
     {
-        _animator = GetComponent<Animator>();
-        _rigidbody = GetComponent<Rigidbody2D>();
-
         _speed = Animator.StringToHash("Speed");
         _direction = Animator.StringToHash("Direction");
         _jump = Animator.StringToHash("IsJump");

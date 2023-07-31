@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class PlayerInput : MonoBehaviour
 {
@@ -9,15 +7,15 @@ public class PlayerInput : MonoBehaviour
     private bool _facingRight = false;
     private bool _isGrounded = false;
 
-    public event UnityAction<float> OnMove;
-    public event UnityAction OnJump;
+    public event Action<float> Moved;
+    public event Action Jumped;
 
     private void Update()
     {
         _horizontalMove = Input.GetAxisRaw("Horizontal");
         
         if (_isGrounded && Input.GetKeyDown(KeyCode.Space))
-            OnJump?.Invoke();
+            Jumped?.Invoke();
 
         if (_horizontalMove < 0 && _facingRight)
             Flip();
@@ -27,7 +25,7 @@ public class PlayerInput : MonoBehaviour
 
     private void FixedUpdate()
     {
-        OnMove?.Invoke(_horizontalMove);
+        Moved?.Invoke(_horizontalMove);
     }
 
     private void OnCollisionStay2D(Collision2D collision)

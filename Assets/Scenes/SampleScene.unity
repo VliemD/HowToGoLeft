@@ -1537,6 +1537,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 669143272497331118, guid: 6d45f45ccbef7274ea37dce6e36b6374, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 1457258589}
+    - target: {fileID: 669143272497331118, guid: 6d45f45ccbef7274ea37dce6e36b6374, type: 3}
+      propertyPath: _rigidbody
+      value: 
+      objectReference: {fileID: 1457258587}
     - target: {fileID: 1338242522170008039, guid: 6d45f45ccbef7274ea37dce6e36b6374, type: 3}
       propertyPath: m_Bounds.m_Center.x
       value: -0.26073337
@@ -1622,9 +1630,17 @@ PrefabInstance:
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6454433262650057070, guid: 6d45f45ccbef7274ea37dce6e36b6374, type: 3}
+      propertyPath: _rigidbody
+      value: 
+      objectReference: {fileID: 1457258587}
+    - target: {fileID: 6454433262650057070, guid: 6d45f45ccbef7274ea37dce6e36b6374, type: 3}
       propertyPath: _speedMove
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6454433262650057070, guid: 6d45f45ccbef7274ea37dce6e36b6374, type: 3}
+      propertyPath: _playerInput
+      value: 
+      objectReference: {fileID: 1457258586}
     - target: {fileID: 7884599119003054819, guid: 6d45f45ccbef7274ea37dce6e36b6374, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -2435,6 +2451,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60825d6cd49fff646a8f515edebf99be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1457258586 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9020806587950778935, guid: 6d45f45ccbef7274ea37dce6e36b6374, type: 3}
+  m_PrefabInstance: {fileID: 1086487203}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2bc23148e55e524e9cfbd9f8601d1ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &1457258587 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 658209418, guid: 6d45f45ccbef7274ea37dce6e36b6374, type: 3}
+  m_PrefabInstance: {fileID: 1086487203}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1457258589 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 926649840762083339, guid: 6d45f45ccbef7274ea37dce6e36b6374, type: 3}
+  m_PrefabInstance: {fileID: 1086487203}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1483798955
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,31 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerInput))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _speedMove;
     [SerializeField] private float _jumpForce;
 
-    private Rigidbody2D _rigidbody;
-    private PlayerInput _playerInput;
-
-    private void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _playerInput = GetComponent<PlayerInput>();
-    }
+    [SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private PlayerInput _playerInput;
 
     private void OnEnable()
     {
-        _playerInput.OnMove += Move;
-        _playerInput.OnJump += Jump;
+        _playerInput.Moved += Move;
+        _playerInput.Jumped += Jump;
     }
 
     private void OnDisable()
     {
-        _playerInput.OnMove -= Move;
-        _playerInput.OnJump -= Jump;
+        _playerInput.Moved -= Move;
+        _playerInput.Jumped -= Jump;
     }
 
     private void Move(float horizontalMove)

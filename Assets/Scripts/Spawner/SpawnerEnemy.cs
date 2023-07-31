@@ -1,38 +1,21 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class SpawnerEnemy : Spawner
 {
-    [SerializeField] private List<GameObject> _gameObjectsPoints;
+    [SerializeField] private List<Transform> _points;
 
-    private Waypoint _waypoint;
+    private Enemy _enemy;   
 
     private void Start()
     {
-        Respawn();        
-        _waypoint.OnCreate += GetTargetPoints;
-    }
-
-    private void OnDisable()
-    {
-        _waypoint.OnCreate -= GetTargetPoints;        
+        Respawn();
     }
 
     protected override void Respawn()
     {
-        _waypoint = Instantiate(Template, transform.position, Quaternion.identity).GetComponent<Waypoint>();
-    }
-
-    private List<Transform> GetTargetPoints()
-    {
-        List<Transform> points = new List<Transform>();
-
-        foreach (var gameObjectPoint in _gameObjectsPoints)
-            points.Add(gameObjectPoint.GetComponent<Transform>());
-
-        return points;
+        _enemy = Instantiate(Template, transform.position, Quaternion.identity).GetComponent<Enemy>();
+    
+        _enemy.Initialize(_points);       
     }
 }

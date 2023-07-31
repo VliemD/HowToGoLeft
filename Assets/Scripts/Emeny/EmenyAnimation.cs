@@ -1,19 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EmenyAnimation : MonoBehaviour
 {
-    private Rigidbody2D _rigidbody;
-    private Animator _animator;
+    [SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private Animator _animator;
 
     private int _speed;
 
     private void Start()
     {
-        _animator = GetComponent<Animator>();
-        _rigidbody = GetComponent<Rigidbody2D>();
-
         _speed = Animator.StringToHash("Speed");       
     }
 

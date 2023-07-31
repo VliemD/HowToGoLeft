@@ -1,53 +1,47 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _offset = 0.2f;
     [SerializeField] private int _damage = 1;
+    [SerializeField] private Waypoint _waypoint;
+    [SerializeField] private EnemyMovement _movement;
+
     private float _directionMove;
-    private bool _facingRight = false;
     private Transform _target;
+    
+    public event Action<float> Moved;
+    public event Func<Transform, Transform> ReachedTarget;
 
-    public event UnityAction<float> OnMove;
-    public event Func<Transform,Transform> OnReachingTarget;
-
-    private void Start()
+    public void Initialize(List<Transform> points)
     {
-        StartCoroutine(LoadingOnWaitSecond());        
+        _waypoint.Initialize(points);
+        _movement.Initialize();
+        _target = ReachedTarget?.Invoke(_target);
+        SetDirection();             
     }
 
-    private IEnumerator LoadingOnWaitSecond()
+    private void OnDisable()
     {
-        yield return null;
-        _target = OnReachingTarget?.Invoke(_target);
-        SetDirection();
-    }
+        _waypoint.Dispose();
+        _movement.Dispose();
+    }   
 
     private void Update()
     {
-        if (_target == null)
-            return;
-
         if (transform.position.x < _target.position.x + _offset &&
             transform.position.x > _target.position.x - _offset)
         {
             SetNextTarget();
             SetDirection();
-        }
-
-        if (_directionMove < 0 && _facingRight)
-            Flip();
-        else if (_directionMove > 0 && !_facingRight)
-            Flip();
+        }        
     }
 
     private void FixedUpdate()
     {
-        OnMove?.Invoke(_directionMove);
+        Moved?.Invoke(_directionMove);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -60,18 +54,17 @@ public class Enemy : MonoBehaviour
 
     private void SetNextTarget()
     {
-        _target = OnReachingTarget?.Invoke(_target);
+        _target = ReachedTarget?.Invoke(_target);
     }
 
     private void SetDirection()
     {
         _directionMove = _target.position.x > transform.position.x ? 1 : -1;
+        Flip();
     }      
 
     private void Flip()
     {
-        _facingRight = !_facingRight;
-
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnerMoney : Spawner
@@ -9,7 +7,7 @@ public class SpawnerMoney : Spawner
         Instantiate(Template, transform.position, Quaternion.identity);
     }
 
-    private void Awake()
+    private void Start()
     {
         Respawn();
     }
